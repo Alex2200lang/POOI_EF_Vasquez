@@ -1,0 +1,37 @@
+﻿
+@model ExamenFinal.Models.Consumidor
+
+@{
+    ViewBag.Title = "Detalles del consumidor";
+}
+
+<h2>Detalles del consumidor</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["Mensaje"]
+    </div>
+}
+
+<dl class="dl-horizontal">
+    <dt>DNI</dt>
+    <dd>@Model.dnicont</dd>
+
+    <dt>Nombre</dt>
+    <dd>@Model.nomcont</dd>
+
+    <dt>Apellido</dt>
+    <dd>@Model.apecont</dd>
+
+    <dt>Correo</dt>
+    <dd>@Model.emailcont</dd>
+
+    <dt>País</dt>
+    <dd>@Model.idpais</dd>
+</dl>
+
+<p>
+    @Html.ActionLink("Volver al listado", "Index",
+        null, new { @class = "btn btn-default" })
+</p>

@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<ExamenFinal.Models.Consumidor>
+
+@{
+    ViewBag.Title = "Lista de consumidores";
+}
+
+<h2>Lista de consumidores</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["Mensaje"]
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Agregar consumidor", "Create")
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>País</th>
+            <th>Acciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.dnicont</td>
+                <td>@item.nomcont</td>
+                <td>@item.apecont</td>
+                <td>@item.emailcont</td>
+                <td>@item.idpais</td>
+                <td>
+                    @Html.ActionLink("Detalles", "Details",
+                        new { id = item.dnicont }) |
+                    @Html.ActionLink("Actualizar", "Update",
+                        new { id = item.dnicont }) |
+                    @Html.ActionLink("Eliminar", "Delete",
+                        new { id = item.dnicont })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No hay registros</p>
+}
